@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>477</x>
-      <y>441</y>
+      <x>486</x>
+      <y>432</y>
       <w>288</w>
       <h>108</h>
     </coordinates>
@@ -20,9 +20,9 @@ Manage resources during transition</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>522</x>
+      <x>621</x>
       <y>45</y>
-      <w>189</w>
+      <w>108</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>Globals
@@ -34,17 +34,21 @@ defaults
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>729</x>
+      <x>774</x>
       <y>171</y>
-      <w>90</w>
-      <h>90</h>
+      <w>180</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>Game Save
 --
 int progress
 objects
 scene_num
-...</panel_attributes>
+...
+
+Ways to travel through levels:
+ - GUI
+ - Scene Object</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -81,27 +85,17 @@ Modifies Progress</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>765</x>
-      <y>252</y>
-      <w>27</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>702</x>
-      <y>288</y>
-      <w>144</w>
+      <x>783</x>
+      <y>54</y>
+      <w>171</w>
       <h>81</h>
     </coordinates>
-    <panel_attributes>txt_reader
+    <panel_attributes>txt_reader/editor
 --
-access to saved game
+access to saved game slots
+access to read game slots
 data roots
 (game slots)</panel_attributes>
     <additional_attributes/>
@@ -109,7 +103,7 @@ data roots
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
+      <x>558</x>
       <y>162</y>
       <w>108</w>
       <h>144</h>
@@ -125,13 +119,13 @@ data roots
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
+      <x>630</x>
       <y>117</y>
-      <w>27</w>
+      <w>36</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;20.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -149,52 +143,85 @@ data roots
     <coordinates>
       <x>504</x>
       <y>225</y>
-      <w>81</w>
+      <w>72</w>
       <h>27</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
+      <x>603</x>
       <y>297</y>
       <w>27</w>
-      <h>162</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
+      <x>657</x>
       <y>216</y>
-      <w>81</w>
+      <w>135</w>
       <h>27</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>360</x>
-      <y>351</y>
+      <y>333</y>
       <w>153</w>
       <h>54</h>
     </coordinates>
     <panel_attributes>Scene Variable Objects
 --
 Collider
-bg=blue</panel_attributes>
+Diferent Types</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>423</x>
+      <x>414</x>
+      <y>297</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>261</y>
+      <w>72</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;100.0;30.0;100.0;30.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>243</x>
+      <y>351</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Camera</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>252</x>
       <y>297</y>
       <w>27</w>
       <h>72</h>
@@ -205,57 +232,24 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
-      <y>261</y>
-      <w>81</w>
-      <h>135</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;130.0;40.0;130.0;40.0;10.0;70.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>162</x>
-      <y>369</y>
-      <w>90</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes>Camera</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>198</x>
-      <y>297</y>
-      <w>27</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>243</x>
-      <y>369</y>
-      <w>135</w>
+      <x>324</x>
+      <y>351</y>
+      <w>54</w>
       <h>27</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
+      <x>306</x>
       <y>270</y>
-      <w>162</w>
-      <h>117</h>
+      <w>72</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>160.0;10.0;120.0;10.0;120.0;80.0;10.0;80.0;10.0;110.0</additional_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -286,89 +280,63 @@ Keyboard Input</panel_attributes>
     <coordinates>
       <x>261</x>
       <y>81</y>
-      <w>324</w>
+      <w>315</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;10.0;70.0;70.0;310.0;70.0;310.0;120.0;340.0;120.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>72</x>
-      <y>9</y>
-      <w>567</w>
-      <h>585</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>160.0;70.0;160.0;10.0;10.0;10.0;10.0;630.0;610.0;630.0;610.0;600.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>324</x>
-      <y>396</y>
-      <w>126</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>120.0;10.0;120.0;40.0;10.0;40.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>243</x>
-      <y>450</y>
-      <w>180</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>Game Save
---
-Ways to travel through levels:
- - GUI
- - Scene Object</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>414</x>
-      <y>486</y>
-      <w>81</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;70.0;300.0;70.0;300.0;120.0;330.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>81</y>
-      <w>171</w>
-      <h>432</h>
+      <y>90</y>
+      <w>414</w>
+      <h>405</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;10.0;10.0;460.0;170.0;460.0</additional_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0;10.0;430.0;440.0;430.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>603</x>
-      <y>18</y>
-      <w>765</w>
-      <h>495</h>
+      <x>504</x>
+      <y>315</y>
+      <w>315</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>180.0;530.0;830.0;530.0;830.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;50.0;330.0;50.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>234</x>
+      <y>0</y>
+      <w>792</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0;860.0;10.0;860.0;220.0;800.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>666</x>
+      <y>18</y>
+      <w>333</w>
+      <h>486</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>120.0;520.0;350.0;520.0;350.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1053</x>
-      <y>270</y>
-      <w>90</w>
-      <h>90</h>
+      <x>684</x>
+      <y>252</y>
+      <w>72</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>Main Menu
 --
@@ -378,19 +346,19 @@ Ways to travel through levels:
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
+      <x>720</x>
       <y>72</y>
-      <w>189</w>
-      <h>279</h>
+      <w>81</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>160.0;290.0;190.0;290.0;190.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>918</x>
-      <y>261</y>
+      <x>828</x>
+      <y>351</y>
       <w>90</w>
       <h>27</h>
     </coordinates>
@@ -400,8 +368,8 @@ Ways to travel through levels:
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>432</x>
-      <y>315</y>
+      <x>477</x>
+      <y>360</y>
       <w>18</w>
       <h>18</h>
     </coordinates>
@@ -409,20 +377,139 @@ Ways to travel through levels:
     <additional_attributes/>
   </element>
   <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>702</x>
+      <y>117</y>
+      <w>27</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>855</x>
+      <y>126</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>711</x>
+      <y>297</y>
+      <w>27</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>297</y>
+      <w>711</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>770.0;90.0;770.0;120.0;10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>459</x>
+      <y>297</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>315</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>819</x>
-      <y>522</y>
-      <w>216</w>
-      <h>171</h>
+      <x>1224</x>
+      <y>27</y>
+      <w>189</w>
+      <h>153</h>
     </coordinates>
-    <panel_attributes>
-
-
+    <panel_attributes>Ruben:
+ - txt reader
+ - Game Save
+ - AI
+ - Scene Variable Objects
+ - Scene Manager
+ 
 
 
 
 bg=blue</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1224</x>
+      <y>189</y>
+      <w>189</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Jordi:
+ - Main Menu
+ - Checkpoints
+ - GUI
+ - Character Controller
+ - Camera
+ 
+
+
+
+
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1485</x>
+      <y>252</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Other:
+ - app
+ - globals
+ - 
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>765</x>
+      <y>315</y>
+      <w>189</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;190.0;170.0;190.0;10.0</additional_attributes>
   </element>
 </diagram>
