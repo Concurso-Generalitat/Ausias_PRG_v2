@@ -23,16 +23,46 @@ public class Game_Saver
 
 		reader = new StreamReader (GAME_SLOT_PATH);
 
-		String token = reader.ReadLine ();
+		string tmp = "";
+		string token = "";
 
-		for (int i = 1; i < index; i++)
+		int x = 0;
+
+		for (int i = 0; i < index; i++)
 		{
-			token = reader.ReadLine ();
+			tmp = reader.ReadLine ();
 		}
 
-		if(token[0] != '0')
+		if(tmp[0] != '0')
 		{
-
+			//-----ACTO---------------------------------------
+			token = "" + tmp[0];
+			
+			if (!Int32.TryParse(token, out x)) { x = ParseBrute1(token); }
+			
+			retValue.act = x;
+			
+			//-----PROGRESO-----------------------------------
+			token = "" + tmp[2] + tmp[3];
+			
+			if (!Int32.TryParse(token, out x)){ x = ParseBrute2(token); }
+			
+			retValue.progress = x;
+			
+			//-----LAST SCENE---------------------------------
+			token = "" + tmp[5];
+			
+			if (!Int32.TryParse(token, out x)){ x = ParseBrute1("" + tmp[5]); }
+			
+			retValue.last_scene = x;
+			
+			//-----ITEMS--------------------------------------
+			for(int j = 7; j < 23; j+=3)//7, 10, 13, 16, 19, 22
+			{
+				token = "" + tmp[(3*j) + 7] + tmp[(3*j) + 8];
+				
+				retValue.objectList[j] = retValue.ItemFromStr(token);
+			}
 		}
 
 		reader.Close ();
@@ -44,32 +74,48 @@ public class Game_Saver
 
 	public Game_Data[] GetAllSavedData()
 	{
-		int x;
-
-		Game_Data[] retValue = {new Game_Data(), new Game_Data(), new Game_Data()};
+		Game_Data[] retValue = { new Game_Data(), new Game_Data(), new Game_Data() };
 		
 		reader = new StreamReader (GAME_SLOT_PATH);
 		
-		String token = reader.ReadLine ();
+		String tmp, token;
+
+		int x = 0;
 		
 		for (int i = 0; i < 3; i++)
 		{
-			token = reader.ReadLine ();
+			tmp = reader.ReadLine ();
 
-			if(token[0] != '0')
+			if(tmp[0] != '0') //implies GameSlot is not empty
 			{
-				//1:42:2:00,00,00,00,00,00
-				/*
-				if (Int32.TryParse(token[0], out x))
-				{
-					// you know that the parsing attempt
-					// was successful
-					//retValue[i].act = ...
-				}
-				else
-				{
+				//-----ACTO---------------------------------------
+				token = "" + tmp[0];
 
-				}*/
+				if (!Int32.TryParse(token, out x)) { x = ParseBrute1(token); }
+
+				retValue[i].act = x;
+
+				//-----PROGRESO-----------------------------------
+				token = "" + tmp[2] + tmp[3];
+
+				if (!Int32.TryParse(token, out x)){ x = ParseBrute2(token); }
+
+				retValue[i].progress = x;
+
+				//-----LAST SCENE---------------------------------
+				token = "" + tmp[5];
+				
+				if (!Int32.TryParse(token, out x)){ x = ParseBrute1("" + tmp[5]); }
+
+				retValue[i].last_scene = x;
+
+				//-----ITEMS--------------------------------------
+				for(int j = 7; j < 23; j+=3)//7, 10, 13, 16, 19, 22
+				{
+					token = "" + tmp[(3*j) + 7] + tmp[(3*j) + 8];
+
+					retValue[i].objectList[j] = retValue[i].ItemFromStr(token);
+				}
 			}
 		}
 		
@@ -96,12 +142,18 @@ public class Game_Saver
 
 			if(current_slot + 1 == i)
 			{
-				tmp = data.act + ":" + (data.progress / 10) + (data.progress % 10) + ":" + data.last_scene + ":";
+				tmp = data.act + ":";
 
-				for (int j = 1; j < data.MAX_ITEMS; j++)
+				if(data.progress < 10) tmp += "0";
+
+				tmp += data.progress + ":" + data.last_scene + ":";
+
+				for (int j = 0; j < data.MAX_ITEMS - 1; j++)
 				{
 					tmp += data.ItemNumString(data.objectList[i]) + ",";
 				}
+
+				tmp += data.ItemNumString(data.objectList[data.MAX_ITEMS - 1]);
 
 				lines[i] = tmp;
 			}
@@ -111,9 +163,56 @@ public class Game_Saver
 	}
 
 
-	private void ParseBrute(string str)
+	private int ParseBrute1(string num)
 	{
+		switch (num)
+		{
+		case "0": return  0;
+		case "1": return  1;
+		case "2": return  2;
+		case "3": return  3;
+		case "4": return  4;
+		case "5": return  5;
+		case "6": return  6;
+		case "7": return  7;
+		case "8": return  8;
+		case "9": return  9;
+		default:  return -1;
+		}
+	}
 
+	private int ParseBrute2(string num)
+	{
+		switch (num)
+		{
+		case  "0": return   0;
+		case  "1": return   1;
+		case  "2": return   2;
+		case  "3": return   3;
+		case  "4": return   4;
+		case  "5": return   5;
+		case  "6": return   6;
+		case  "7": return   7;
+		case  "8": return   8;
+		case  "9": return   9;
+		case "10": return  10;
+		case "11": return  11;
+		case "12": return  12;
+		case "13": return  13;
+		case "14": return  14;
+		case "15": return  15;
+		case "16": return  16;
+		case "17": return  17;
+		case "18": return  18;
+		case "19": return  19;
+		case "20": return  20;
+		case "21": return  21;
+		case "22": return  22;
+		case "23": return  23;
+		case "24": return  24;
+		case "25": return  25;
+		default:   return  -1;
+		}
 	}
 
 }

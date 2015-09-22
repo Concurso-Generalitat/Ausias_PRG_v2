@@ -3,6 +3,7 @@ public enum InventoryItems
 {
 	NADA = 0,
 	CAMARA,
+	DINERO,
 	TRIPODE,
 	CARRETE,
 	PENDULO,
@@ -16,11 +17,23 @@ public enum InventoryItems
 	PALO,
 	GUSANOS,
 	ANZUELO,
-	CAÑA,
+	CANA,
 	MECHERO_1, //vacio
 	MECHERO_2, //lleno
 	ACEITE,
-	GANZUAS
+	GANZUAS,
+	PAGINA_1,
+	PAGINA_2,
+	PAGINA_3,
+	PAGINA_4,
+}
+
+
+public enum SM_GameState
+{
+	NADA = 0,
+	CAMARA,
+	TRIPODE
 }
 
 

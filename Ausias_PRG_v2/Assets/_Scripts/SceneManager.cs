@@ -1,24 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SceneManager : MonoBehaviour {
+public class SceneManager : MonoBehaviour
+{
+
+	public Game_Data gameData;
+	public Game_Saver gameSaver;
+
 
 	static SceneManager Instance;
 
-	// Use this for initialization
-	void Start () {
-		if (Instance != null) {
+	void Awake()
+	{
+		gameData = null;
+		gameData = new Game_Data ();
+		//gameData.Reset ();
+
+		gameSaver = null;
+		gameSaver = new Game_Saver ("GameSlots.txt");
+	}
+
+	void Start ()
+	{
+		if (Instance != null)
+		{
 			GameObject.Destroy (gameObject);
 		}
-		else {
+		else
+		{
 			GameObject.DontDestroyOnLoad(gameObject);
 			Instance = this;
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		// scene iput to change
-	
+	void Update ()
+	{
+		// manual scene transition
+		if (Input.GetKeyUp (KeyCode.Keypad0))
+		{
+			Application.LoadLevel(0);
+		}
+		if (Input.GetKeyUp (KeyCode.Keypad1))
+		{
+			Application.LoadLevel(1);
+		}
+
+
+
+		if (Input.GetKeyUp (KeyCode.I))
+		{
+			Debug.Log(gameData);
+		}
+
 	}
+
+
 }
