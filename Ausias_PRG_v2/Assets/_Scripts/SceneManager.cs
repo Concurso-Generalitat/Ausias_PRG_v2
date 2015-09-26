@@ -6,6 +6,7 @@ public class SceneManager : MonoBehaviour
 
 	public Game_Data gameData;
 	public Game_Saver gameSaver;
+	private bool debugState;
 
 
 	static SceneManager Instance;
@@ -14,10 +15,12 @@ public class SceneManager : MonoBehaviour
 	{
 		gameData = null;
 		gameData = new Game_Data ();
-		//gameData.Reset ();
+		gameData.Reset ();
 
 		gameSaver = null;
 		gameSaver = new Game_Saver ("GameSlots.txt");
+
+		debugState = false;
 	}
 
 	void Start ()
@@ -35,22 +38,40 @@ public class SceneManager : MonoBehaviour
 	
 	void Update ()
 	{
-		// manual scene transition
-		if (Input.GetKeyUp (KeyCode.Keypad0))
-		{
-			Application.LoadLevel(0);
+		// debug state variable control
+		if (debugState) {
+			if (Input.GetKeyUp(KeyCode.Keypad9)){
+				debugState = false;
+				Debug.Log("Debug Disabled");
+			}
+
+			// manual scene transition
+			if (Input.GetKeyUp (KeyCode.Keypad0)) {
+				Application.LoadLevel (0);
+			}
+			if (Input.GetKeyUp (KeyCode.Keypad1)) {
+				Application.LoadLevel (1);
+			}
+
+			// log gameData
+			if (Input.GetKeyUp (KeyCode.I))
+			{
+				Debug.Log(gameData);
+			}
+
+
+		} else {
+			if(Input.GetKeyUp(KeyCode.Keypad9))
+			{
+				debugState = true;
+				Debug.Log("Debug Enabled");
+			}
 		}
-		if (Input.GetKeyUp (KeyCode.Keypad1))
-		{
-			Application.LoadLevel(1);
-		}
+		
 
 
 
-		if (Input.GetKeyUp (KeyCode.I))
-		{
-			Debug.Log(gameData);
-		}
+
 
 	}
 
