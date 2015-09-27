@@ -4,80 +4,200 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 
-	private float mousePosX;
-	private float mousePosY;
 
-	private float verticalRotationMax;
-	private float verticalRotationMin;
-	private bool camMoveStarted;
-
-	private Vector4 cameraRotationDefault;
-	private Vector4 cameraCurrentRotation;
-	// Use this for initialization
-	void Start () 
-	{
-		cameraGetInitialRotation ();
+	#region structs
+	public struct BoxLimit{
+		public float leftLimit;
+		public float rightLimit;
+		public float topLimit;
+		public float bottomLimit;
 	}
+
+	#endregion
+
+	#region class variables
+	public static BoxLimit cameraLimits = new BoxLimit();
+	public static BoxLimit mouseScrollLimits = new BoxLimit();
+	public static CameraController Instance;
+
+
+	public float sensitivity, cameraMoveSpeed = 60f, radius,minZoom = 10, maxZoom = 100;
+	public float mouseBoundary = 25f;
+	float mouseX;
+	float mouseY;
+
+	bool verticalRotationEnabled = true;
+	float verticalRotationMin = 8f;
+	float verticalRotationMax = 65f;
 	
-	// Update is called once per frame
+
+	[HideInInspector] public float cameraHeight,cameraY;
+	float maxCameraHeight = 85f;
+
+	public GameObject mainCamera,scrollAngle;
+	
+	Transform ausiasTransform;
+
+	#endregion
+
+	void Awake()
+	{
+		CameraController.Instance = this;
+	}
+	void Start()
+	{
+
+
+		mouseScrollLimits.leftLimit = mouseBoundary;
+		mouseScrollLimits.rightLimit = mouseBoundary;
+		mouseScrollLimits.topLimit = mouseBoundary;
+		mouseScrollLimits.bottomLimit = mouseBoundary;
+
+
+
+		ausiasTransform = GameObject.FindGameObjectWithTag ("Player").transform;
+		scrollAngle = new GameObject();
+
+	}
 	void Update ()
 	{
-		handleCameraRotation();
-		handleMovementCamera ();
-
-		mousePosX = Input.mousePosition.x;
-		mousePosY = Input.mousePosition.y;
-	}
-	public void cameraSetInitialRotation()
-	{
-		cameraRotationDefault = new Vector4 (Camera.main.transform.rotation.x,Camera.main.transform.rotation.y,Camera.main.transform.rotation.z,
-		                                     Camera.main.transform.rotation.w);
-	}
-	public Vector4 cameraGetInitialRotation()
-	{
-		cameraCurrentRotation = new Vector4 (Camera.main.transform.rotation.x,Camera.main.transform.rotation.y,
-		                                     Camera.main.transform.rotation.z,Camera.main.transform.rotation.w);
-		Vector4 tmpV4 = new Vector4 (cameraRotationDefault.x - cameraCurrentRotation.x, cameraRotationDefault.y - cameraCurrentRotation.y,
-		                             cameraRotationDefault.z - cameraCurrentRotation.z, cameraRotationDefault.w);
-
-		return tmpV4;
-
-	}
-	public void handleMovementCamera()
-	{
-		if(Input.GetKeyDown(KeyCode.W))
-		{
-			Debug.Log ( " press W ");
-			camMoveStarted = false;
-			Camera.main.transform.Rotate(cameraGetInitialRotation().x,cameraGetInitialRotation().y,cameraGetInitialRotation().z);
+		if(Input.GetMouseButton(1))
+		  {
+		transform.RotateAround(ausiasTransform.position,Vector3.up,sensitivity * Time.deltaTime * Input.GetAxis("Mouse X"));
 		}
+		applyScroll ();
+
 	}
 
-	public void handleCameraRotation()
+	public void applyScroll()
 	{
-	
-		var easeFactor = 10f;
+		float deadZone = 0.01f;
+		float easeFactor = 2f;
+		float scrollWheelValue = Input.GetAxis ("Mouse ScrollWheel") * easeFactor;
 
-		if (Input.GetMouseButton (1)) 
-		{
-			if(!camMoveStarted ) 
-			{
-				cameraSetInitialRotation();
+		// check deadZone
 
-				camMoveStarted = true;
-			}
 
-			// horizontal
-			Debug.Log ( " Right button pressed");
-			if(Input.mousePosition.x != mousePosX)
-			{
 
-				var cameraRotationY = ( Input.mousePosition.x - mousePosX) * easeFactor * Time.deltaTime;
-				var cameraRotationX = ( Input.mousePosition.y + mousePosY) * Time.deltaTime;
+		float eulerAngleX = mainCamera.transform.localEulerAngles.x;
 
-				Camera.main.transform.Rotate(0,cameraRotationY,0);
-			}
+		// configure scroll angle 
 
-		}
+		scrollAngle.transform.position = transform.position;
+		scrollAngle.transform.eulerAngles = new Vector3 (eulerAngleX, this.transform.eulerAngles.y, this.transform.eulerAngles.z);
+		scrollAngle.transform.Translate (Vector3.forward * scrollWheelValue);
+
+		Vector3 desiredScrollPosition = scrollAngle.transform.position;
+
+		// update camera
+
+		float heightDifference = desiredScrollPosition.y - this.transform.position.y;
+		cameraHeight += heightDifference;
+		cameraY = desiredScrollPosition.y;
+
+
+  		if (desiredScrollPosition.y > 4 || desiredScrollPosition.y < 1.4)
+			return;
+
+
+
+
+		this.transform.position = desiredScrollPosition;
+		return;
+
+
+
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
