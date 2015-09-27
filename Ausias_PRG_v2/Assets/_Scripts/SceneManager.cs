@@ -39,25 +39,22 @@ public class SceneManager : MonoBehaviour
 	void Update ()
 	{
 		// debug state variable control
-		if (debugState) {
+		if (debugState)
+		{
 			if (Input.GetKeyUp(KeyCode.Keypad9)){
 				debugState = false;
 				Debug.Log("Debug Disabled");
 			}
 
 			// manual scene transition
-			if (Input.GetKeyUp (KeyCode.Keypad0)) {
-				Application.LoadLevel (0);
-			}
-			if (Input.GetKeyUp (KeyCode.Keypad1)) {
-				Application.LoadLevel (1);
-			}
+			if (Input.GetKeyUp (KeyCode.Keypad0)) Application.LoadLevel (0);
+			if (Input.GetKeyUp (KeyCode.Keypad1)) Application.LoadLevel (1);
+
+
 
 			// log gameData
 			if (Input.GetKeyUp (KeyCode.I))
-			{
 				Debug.Log(gameData);
-			}
 
 
 		} else {
