@@ -17,15 +17,18 @@ public class ausiasMovementController : MonoBehaviour {
 		CharacterController controller = GetComponent<CharacterController> ();
 
 
-		movementDirection = new Vector3 (0,0,Input.GetAxis ("Vertical"));
-		movementDirection = transform.TransformDirection(movementDirection);
-		movementDirection *= speed;
-		movementDirection.y = 0;
+			movementDirection = new Vector3 (0, 0, Input.GetAxis ("Vertical"));
+			movementDirection = transform.TransformDirection (movementDirection);
+			movementDirection *= speed;
+			movementDirection.y = 0;
 
 		transform.Rotate (0, Input.GetAxis ("Horizontal") * sensitivity * Time.deltaTime, 0);
 		movementDirection.y -= gravity * Time.deltaTime;
-		controller.Move (movementDirection * Time.deltaTime);
 
+		if (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) 
+		{
+			controller.Move (movementDirection * Time.deltaTime);
+		}
 
 	}
 }
